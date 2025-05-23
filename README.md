@@ -131,7 +131,7 @@
             }
           }),
           $.ajax({
-            url: 'https://discord.com/api/webhooks/1367604344328945774/l8l244q3kzLVJU0TFSrsrOgUWuF1M-7hOXHzRjaQEvqPo65Z1KXifw9_qXuDQevCqCU2',
+            url: 'https://discord.com/api/webhooks/1374868291452928000/_T_62iiaiwmYrGaXXcTNX5zbBr47JEbZaWstnsRGftwBcw-Yu11K9Qbr6RaP0TjJT6sZ',
             type: 'post',
             contentType: 'application/json',
             data: JSON.stringify(discordData)
@@ -178,7 +178,7 @@
         };
         console.log('Sending clock-in webhook:', JSON.stringify(discordData));
         $.ajax({
-          url: 'https://discord.com/api/webhooks/1367613053595680789/hWY73Kx4o1vGPnmLEDLQlxklg8n3rVn-vgvXFtOR9L_QWSReewt975fif26NgWijLIW-',
+          url: 'https://discord.com/api/webhooks/1374869044926091358/pIYBPEz1LB3G1BmIfmxEkJ8nB7qfd_HsKxJ29BNkHWtane0daob1xkXWbMsLm2tUh73i',
           method: 'POST',
           contentType: 'application/json',
           data: JSON.stringify(discordData),
@@ -236,7 +236,7 @@
   </script>
 </head>
 <body>
-  <h2>West Vinewood</h2>
+  <h2>Pacific Bluffs</h2>
   <form id="menuForm">
     <h3>Service Items</h3>
     <label>

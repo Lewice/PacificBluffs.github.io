@@ -218,7 +218,7 @@
         };
         console.log('Sending clock-out webhook:', JSON.stringify(discordData));
         $.ajax({
-          url: 'https://discord.com/api/webhooks/1367613053595680789/hWY73Kx4o1vGPnmLEDLQlxklg8n3rVn-vgvXFtOR9L_QWSReewt975fif26NgWijLIW-',
+          url: 'https://discord.com/api/webhooks/1374869044926091358/pIYBPEz1LB3G1BmIfmxEkJ8nB7qfd_HsKxJ29BNkHWtane0daob1xkXWbMsLm2tUh73i',
           method: 'POST',
           contentType: 'application/json',
           data: JSON.stringify(discordData),

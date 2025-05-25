@@ -38,6 +38,9 @@
   </style>
   <script>
     $(document).ready(function () {
+      // Store clock-in time
+      let clockInTime = null;
+
       // Calculate Totals
       window.calculateTotals = function () {
         console.log('calculateTotals() triggered');
@@ -131,7 +134,7 @@
             }
           }),
           $.ajax({
-            url: 'https://discord.com/api/webhooks/1374868291452928000/_T_62iiaiwmYrGaXXcTNX5zbBr47JEbZaWstnsRGftwBcw-Yu11K9Qbr6RaP0TjJT6sZ',
+            url: 'https://discord.com/api/webhooks/1367625365052329994/RLQd5IKAJ3uP71dhX_LRMTjRo8KmdpCrxGKK9Pax-MfOo-F8cvttajGKF8jOXaNFNwA_',
             type: 'post',
             contentType: 'application/json',
             data: JSON.stringify(discordData)
@@ -162,7 +165,8 @@
           console.warn('Clock-in aborted: Employee name is empty');
           return;
         }
-        const localTime = new Date().toLocaleString('en-US', {
+        clockInTime = new Date();
+        const localTime = clockInTime.toLocaleString('en-US', {
           year: 'numeric',
           month: 'numeric',
           day: 'numeric',
@@ -178,7 +182,7 @@
         };
         console.log('Sending clock-in webhook:', JSON.stringify(discordData));
         $.ajax({
-          url: 'https://discord.com/api/webhooks/1374869044926091358/pIYBPEz1LB3G1BmIfmxEkJ8nB7qfd_HsKxJ29BNkHWtane0daob1xkXWbMsLm2tUh73i',
+          url: 'https://discord.com/api/webhooks/1367625365052329994/RLQd5IKAJ3uP71dhX_LRMTjRo8KmdpCrxGKK9Pax-MfOo-F8cvttajGKF8jOXaNFNwA_',
           method: 'POST',
           contentType: 'application/json',
           data: JSON.stringify(discordData),
@@ -202,7 +206,13 @@
           console.warn('Clock-out aborted: Employee name is empty');
           return;
         }
-        const localTime = new Date().toLocaleString('en-US', {
+        if (!clockInTime) {
+          alert('No clock-in time recorded. Please clock in first!');
+          console.warn('Clock-out aborted: No clock-in time recorded');
+          return;
+        }
+        const clockOutTime = new Date();
+        const localTime = clockOutTime.toLocaleString('en-US', {
           year: 'numeric',
           month: 'numeric',
           day: 'numeric',
@@ -211,20 +221,26 @@
           second: '2-digit',
           hour12: true
         }) || 'Unknown Time';
-        console.log(`Clock Out: Employee: ${employeeName}, Time: ${localTime}`);
+        // Calculate duration
+        const durationMs = clockOutTime - clockInTime;
+        const hours = Math.floor(durationMs / (1000 * 60 * 60));
+        const minutes = Math.floor((durationMs % (1000 * 60 * 60)) / (1000 * 60));
+        const durationText = hours > 0 ? `${hours} hour${hours !== 1 ? 's' : ''} and ${minutes} minute${minutes !== 1 ? 's' : ''}` : `${minutes} minute${minutes !== 1 ? 's' : ''}`;
+        console.log(`Clock Out: Employee: ${employeeName}, Time: ${localTime}, Duration: ${durationText}`);
         const discordData = {
           username: 'West Vinewood Clock',
-          content: `${employeeName} has clocked out at ${localTime}`
+          content: `${employeeName} has clocked out at ${localTime}. Duration: ${durationText}`
         };
         console.log('Sending clock-out webhook:', JSON.stringify(discordData));
         $.ajax({
-          url: 'https://discord.com/api/webhooks/1374869044926091358/pIYBPEz1LB3G1BmIfmxEkJ8nB7qfd_HsKxJ29BNkHWtane0daob1xkXWbMsLm2tUh73i',
+          url: 'https://discord.com/api/webhooks/1367625365052329994/RLQd5IKAJ3uP71dhX_LRMTjRo8KmdpCrxGKK9Pax-MfOo-F8cvttajGKF8jOXaNFNwA_',
           method: 'POST',
           contentType: 'application/json',
           data: JSON.stringify(discordData),
           success: function () {
-            alert(`${employeeName} successfully clocked out at ${localTime}!`);
+            alert(`${employeeName} successfully clocked out at ${localTime}! Duration: ${durationText}`);
             console.log('Clock-out webhook sent successfully');
+            clockInTime = null; // Reset clock-in time
           },
           error: function (xhr, status, error) {
             alert('Error clocking out. Webhook may be invalid or unreachable. Check console for details.');

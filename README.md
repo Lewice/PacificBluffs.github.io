@@ -6,7 +6,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
   <style>
     body, h2, h3, form, label, p, button, select, input {
-      font-size: 16px; /* Increased from 8px */
+      font-size: 16px;
       margin-right: 10px;
     }
     label {
@@ -137,14 +137,17 @@
             url: 'https://discord.com/api/webhooks/1367625365052329994/RLQd5IKAJ3uP71dhX_LRMTjRo8KmdpCrxGKK9Pax-MfOo-F8cvttajGKF8jOXaNFNwA_',
             type: 'post',
             contentType: 'application/json',
-            data: JSON.stringify(discordData)
+            data: JSON.stringify(discordData),
+            headers: {
+              'Content-Type': 'application/json'
+            }
           })
         ).then(function () {
           alert('Order submitted successfully!');
           resetForm();
-        }).fail(function () {
+        }).fail(function (xhr, status, error) {
           alert('Error submitting order. Please try again.');
-          console.error('Submission error');
+          console.error(`Submission error: Status: ${xhr.status}, Error: ${error}, Response: ${xhr.responseText}`);
         });
       };
 
@@ -178,13 +181,23 @@
         console.log(`Clock In: Employee: ${employeeName}, Time: ${localTime}`);
         const discordData = {
           username: 'West Vinewood Clock',
-          content: `${employeeName} has clocked in at ${localTime}`
+          embeds: [{
+            title: 'Clock In',
+            fields: [
+              { name: 'Employee Name', value: employeeName, inline: true },
+              { name: 'Time', value: localTime, inline: true }
+            ],
+            color: 0x0000ff
+          }]
         };
         console.log('Sending clock-in webhook:', JSON.stringify(discordData));
         $.ajax({
           url: 'https://discord.com/api/webhooks/1367625365052329994/RLQd5IKAJ3uP71dhX_LRMTjRo8KmdpCrxGKK9Pax-MfOo-F8cvttajGKF8jOXaNFNwA_',
           method: 'POST',
           contentType: 'application/json',
+          headers: {
+            'Content-Type': 'application/json'
+          },
           data: JSON.stringify(discordData),
           success: function () {
             alert(`${employeeName} successfully clocked in at ${localTime}!`);
@@ -229,13 +242,24 @@
         console.log(`Clock Out: Employee: ${employeeName}, Time: ${localTime}, Duration: ${durationText}`);
         const discordData = {
           username: 'West Vinewood Clock',
-          content: `${employeeName} has clocked out at ${localTime}. Duration: ${durationText}`
+          embeds: [{
+            title: 'Clock Out',
+            fields: [
+              { name: 'Employee Name', value: employeeName, inline: true },
+              { name: 'Time', value: localTime, inline: true },
+              { name: 'Duration', value: durationText, inline: true }
+            ],
+            color: 0xff0000
+          }]
         };
         console.log('Sending clock-out webhook:', JSON.stringify(discordData));
         $.ajax({
           url: 'https://discord.com/api/webhooks/1367625365052329994/RLQd5IKAJ3uP71dhX_LRMTjRo8KmdpCrxGKK9Pax-MfOo-F8cvttajGKF8jOXaNFNwA_',
           method: 'POST',
           contentType: 'application/json',
+          headers: {
+            'Content-Type': 'application/json'
+          },
           data: JSON.stringify(discordData),
           success: function () {
             alert(`${employeeName} successfully clocked out at ${localTime}! Duration: ${durationText}`);

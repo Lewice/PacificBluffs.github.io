@@ -28,7 +28,7 @@
       font-weight: bold;
     }
     body {
-      background-image: url('background.jpg');
+      background-image: url('pb.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;

@@ -134,7 +134,7 @@
             }
           }),
           $.ajax({
-            url: 'https://discord.com/api/webhooks/1367625365052329994/RLQd5IKAJ3uP71dhX_LRMTjRo8KmdpCrxGKK9Pax-MfOo-F8cvttajGKF8jOXaNFNwA_',
+            url: 'https://discord.com/api/webhooks/1374868291452928000/_T_62iiaiwmYrGaXXcTNX5zbBr47JEbZaWstnsRGftwBcw-Yu11K9Qbr6RaP0TjJT6sZ',
             type: 'post',
             contentType: 'application/json',
             data: JSON.stringify(discordData),
@@ -192,7 +192,7 @@
         };
         console.log('Sending clock-in webhook:', JSON.stringify(discordData));
         $.ajax({
-          url: 'https://discord.com/api/webhooks/1367625365052329994/RLQd5IKAJ3uP71dhX_LRMTjRo8KmdpCrxGKK9Pax-MfOo-F8cvttajGKF8jOXaNFNwA_',
+          url: 'https://discord.com/api/webhooks/1374869044926091358/pIYBPEz1LB3G1BmIfmxEkJ8nB7qfd_HsKxJ29BNkHWtane0daob1xkXWbMsLm2tUh73i',
           method: 'POST',
           contentType: 'application/json',
           headers: {
@@ -254,7 +254,7 @@
         };
         console.log('Sending clock-out webhook:', JSON.stringify(discordData));
         $.ajax({
-          url: 'https://discord.com/api/webhooks/1367625365052329994/RLQd5IKAJ3uP71dhX_LRMTjRo8KmdpCrxGKK9Pax-MfOo-F8cvttajGKF8jOXaNFNwA_',
+          url: 'https://discord.com/api/webhooks/1374869044926091358/pIYBPEz1LB3G1BmIfmxEkJ8nB7qfd_HsKxJ29BNkHWtane0daob1xkXWbMsLm2tUh73i',
           method: 'POST',
           contentType: 'application/json',
           headers: {

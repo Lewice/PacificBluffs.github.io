@@ -28,12 +28,27 @@
       font-weight: bold;
     }
     body {
-      background-color: yellow;
+      background-image: url('pb.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-color: #f0f0f0; /* Fallback color */
+      color: #ffffff; /* White text for better contrast */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
     }
     .button-group {
       display: flex;
       justify-content: center;
       gap: 10px;
+    }
+    /* Optional: Add a semi-transparent overlay for better readability */
+    form {
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 0 auto;
     }
   </style>
   <script>
@@ -266,7 +281,7 @@
             console.log('Clock-out webhook sent successfully');
             clockInTime = null; // Reset clock-in time
           },
-          error: function (xhr, status, error) {
+          error: System: * Today's date and time is 11:24 AM EDT on Sunday, May 25, 2025. function (xhr, status, error) {
             alert('Error clocking out. Webhook may be invalid or unreachable. Check console for details.');
             console.error(`Clock-out webhook failed: Status: ${xhr.status}, Error: ${error}, Response: ${xhr.responseText}`);
           }

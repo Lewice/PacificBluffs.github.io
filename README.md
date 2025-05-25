@@ -27,6 +27,9 @@
     body, h2, h3 {
       font-weight: bold;
     }
+    h2 {
+      color: cyan; /* Set Pacific Bluffs header to cyan */
+    }
     body {
       background-image: url('pb.png');
       background-size: cover;

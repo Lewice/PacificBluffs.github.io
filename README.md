@@ -28,7 +28,7 @@
       font-weight: bold;
     }
     body {
-      background-image: url('pb.png');
+      background-image: url('background.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -58,9 +58,10 @@
 
       // Calculate Totals
       window.calculateTotals = function () {
-        console.log('calculateTotals() triggered');
+        console.log('calculateTotals() triggered'); // Debug: Confirm function is called
         let total = 0;
         const menuItems = $('.menu-item:checked');
+        console.log('Checked items:', menuItems.length); // Debug: Log number of checked items
         if (menuItems.length === 0) {
           alert('Please select at least one item to calculate!');
           $('#total, #commission').text('');
@@ -70,10 +71,11 @@
           const price = parseFloat($(this).attr('data-price'));
           const quantity = parseInt($(this).next('.quantity').val()) || 1;
           const discount = parseFloat($('#discount').val()) || 0;
+          console.log(`Processing item - Price: ${price}, Quantity: ${quantity}, Discount: ${discount}%`); // Debug: Log item details
           if (!isNaN(price) && !isNaN(quantity) && quantity > 0) {
             const itemTotal = price * quantity * (1 - (discount / 100));
             total += itemTotal;
-            console.log(`Item: ${$(this).parent().text().trim()}, Price: ${price}, Quantity: ${quantity}, Discount: ${discount}%, Item Total: ${itemTotal.toFixed(2)}`);
+            console.log(`Item: ${$(this).parent().text().trim()}, Item Total: ${itemTotal.toFixed(2)}`); // Debug: Log item total
           } else {
             console.warn(`Skipping item: Invalid price (${price}) or quantity (${quantity})`);
           }
@@ -81,11 +83,14 @@
         const commission = total * 0.25;
         $('#total').text(total.toFixed(2));
         $('#commission').text(commission.toFixed(2));
-        console.log(`Final Total: ${total.toFixed(2)}, Commission: ${commission.toFixed(2)}`);
+        console.log(`Final Total: ${total.toFixed(2)}, Commission: ${commission.toFixed(2)}`); // Debug: Log final results
       };
 
       // Bind Calculate button
-      $('#calculateBtn').click(window.calculateTotals);
+      $('#calculateBtn').click(function () {
+        console.log('Calculate button clicked'); // Debug: Confirm button click
+        window.calculateTotals();
+      });
 
       // Submit Form
       window.SubForm = function () {
@@ -281,7 +286,7 @@
             console.log('Clock-out webhook sent successfully');
             clockInTime = null; // Reset clock-in time
           },
-          error: System: * Today's date and time is 11:24 AM EDT on Sunday, May 25, 2025. function (xhr, status, error) {
+          error: function (xhr, status, error) {
             alert('Error clocking out. Webhook may be invalid or unreachable. Check console for details.');
             console.error(`Clock-out webhook failed: Status: ${xhr.status}, Error: ${error}, Response: ${xhr.responseText}`);
           }

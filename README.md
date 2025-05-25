@@ -180,7 +180,7 @@
         }) || 'Unknown Time';
         console.log(`Clock In: Employee: ${employeeName}, Time: ${localTime}`);
         const discordData = {
-          username: 'West Vinewood Clock',
+          username: 'Pacific Bluffs Clock',
           embeds: [{
             title: 'Clock In',
             fields: [

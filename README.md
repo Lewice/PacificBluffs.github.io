@@ -83,7 +83,7 @@
             console.warn(`Skipping item: Invalid price (${price}) or quantity (${quantity})`);
           }
         });
-        const commission = total * 0.25;
+        const commission = total * 0.30;
         $('#total').text(total.toFixed(2));
         $('#commission').text(commission.toFixed(2));
         console.log(`Final Total: ${total.toFixed(2)}, Commission: ${commission.toFixed(2)}`); // Debug: Log final results
@@ -376,6 +376,10 @@
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
+      <input type="checkbox" class="menu-item" data-price="5000"> Cleaning Kit - $5000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
       <input type="checkbox" class="menu-item" data-price="13500"> Bulletproof Tires - $13500
       <input type="number" class="quantity" value="1" min="1">
     </label>
@@ -436,7 +440,7 @@
     <input type="text" id="employeeName" required>
     <div style="margin-bottom: 30px;"></div>
     <p>Total: $<span id="total"></span></p>
-    <p>Commission (25%): $<span id="commission"></span></p>
+    <p>Commission (30%): $<span id="commission"></span></p>
     <div style="margin-bottom: 30px;"></div>
     <div class="button-group">
       <button type="button" id="calculateBtn" onclick="calculateTotals()">Calculate</button>

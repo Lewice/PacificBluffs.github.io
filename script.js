@@ -4,10 +4,10 @@ $(document).ready(function () {
 
   // Calculate Totals
   window.calculateTotals = function () {
-    console.log('calculateTotals() triggered'); // Debug: Confirm function is called
+    console.log('calculateTotals() triggered');
     let total = 0;
     const menuItems = $('.menu-item:checked');
-    console.log('Checked items:', menuItems.length); // Debug: Log number of checked items
+    console.log('Checked items:', menuItems.length);
     if (menuItems.length === 0) {
       alert('Please select at least one item to calculate!');
       $('#total, #commission').text('');
@@ -17,11 +17,11 @@ $(document).ready(function () {
       const price = parseFloat($(this).attr('data-price'));
       const quantity = parseInt($(this).next('.quantity').val()) || 1;
       const discount = parseFloat($('#discount').val()) || 0;
-      console.log(`Processing item - Price: ${price}, Quantity: ${quantity}, Discount: ${discount}%`); // Debug: Log item details
+      console.log(`Processing item - Price: ${price}, Quantity: ${quantity}, Discount: ${discount}%`);
       if (!isNaN(price) && !isNaN(quantity) && quantity > 0) {
         const itemTotal = price * quantity * (1 - (discount / 100));
         total += itemTotal;
-        console.log(`Item: ${$(this).parent().text().trim()}, Item Total: ${itemTotal.toFixed(2)}`); // Debug: Log item total
+        console.log(`Item: ${$(this).parent().text().trim()}, Item Total: ${itemTotal.toFixed(2)}`);
       } else {
         console.warn(`Skipping item: Invalid price (${price}) or quantity (${quantity})`);
       }
@@ -29,12 +29,12 @@ $(document).ready(function () {
     const commission = total * 0.30;
     $('#total').text(total.toFixed(2));
     $('#commission').text(commission.toFixed(2));
-    console.log(`Final Total: ${total.toFixed(2)}, Commission: ${commission.toFixed(2)}`); // Debug: Log final results
+    console.log(`Final Total: ${total.toFixed(2)}, Commission: ${commission.toFixed(2)}`);
   };
 
   // Bind Calculate button
   $('#calculateBtn').click(function () {
-    console.log('Calculate button clicked'); // Debug: Confirm button click
+    console.log('Calculate button clicked');
     window.calculateTotals();
   });
 
@@ -123,6 +123,7 @@ $(document).ready(function () {
     $('.quantity').val(1);
     $('#total, #commission').text('');
     $('#discount').val('0');
+    $('#employeeName').val(''); // Clear employee name
   };
 
   // Clock In
@@ -207,7 +208,7 @@ $(document).ready(function () {
     const durationText = hours > 0 ? `${hours} hour${hours !== 1 ? 's' : ''} and ${minutes} minute${minutes !== 1 ? 's' : ''}` : `${minutes} minute${minutes !== 1 ? 's' : ''}`;
     console.log(`Clock Out: Employee: ${employeeName}, Time: ${localTime}, Duration: ${durationText}`);
     const discordData = {
-      username: 'West Vinewood Clock',
+      username: 'Pacific Bluffs Clock',
       embeds: [{
         title: 'Clock Out',
         fields: [
@@ -219,4 +220,23 @@ $(document).ready(function () {
       }]
     };
     console.log('Sending clock-out webhook:', JSON.stringify(discordData));
-    $.
+    $.ajax({
+      url: 'https://discord.com/api/webhooks/1385206248353304617/I30fwtDhWExcE3x_dFi5drhRSkVb18Hhitgb8epjTfuSU-KVyCFp3kbLs2gRKQ1LQguR',
+      method: 'POST',
+      contentType: 'application/json',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: JSON.stringify(discordData),
+      success: function () {
+        alert(`${employeeName} successfully clocked out at ${localTime}! Duration: ${durationText}`);
+        console.log('Clock-out webhook sent successfully');
+        clockInTime = null; // Reset clock-in time
+      },
+      error: function (xhr, status, error) {
+        alert('Error clocking out. Webhook may be invalid or unreachable. Check console for details.');
+        console.error(`Clock-out webhook failed: Status: ${xhr.status}, Error: ${error}, Response: ${xhr.responseText}`);
+      }
+    });
+  };
+});

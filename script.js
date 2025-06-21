@@ -1,4 +1,7 @@
 $(document).ready(function () {
+  // Log jQuery loading
+  console.log('jQuery loaded:', typeof $);
+
   // Store clock-in time
   let clockInTime = null;
 
@@ -15,21 +18,26 @@ $(document).ready(function () {
     }
     menuItems.each(function () {
       const price = parseFloat($(this).attr('data-price'));
-      const quantity = parseInt($(this).next('.quantity').val()) || 1;
+      const quantityInput = $(this).siblings('.quantity');
+      const quantity = quantityInput.length ? parseInt(quantityInput.val()) || 1 : 1;
       const discount = parseFloat($('#discount').val()) || 0;
       console.log(`Processing item - Price: ${price}, Quantity: ${quantity}, Discount: ${discount}%`);
-      if (!isNaN(price) && !isNaN(quantity) && quantity > 0) {
+      if (isNaN(price)) {
+        console.error('Invalid price for item:', $(this).parent().text().trim());
+        return;
+      }
+      if (!isNaN(quantity) && quantity > 0) {
         const itemTotal = price * quantity * (1 - (discount / 100));
         total += itemTotal;
         console.log(`Item: ${$(this).parent().text().trim()}, Item Total: ${itemTotal.toFixed(2)}`);
       } else {
-        console.warn(`Skipping item: Invalid price (${price}) or quantity (${quantity})`);
+        console.warn(`Skipping item: Invalid quantity (${quantity})`);
       }
     });
     const commission = total * 0.30;
+    console.log(`Final Total: ${total.toFixed(2)}, Commission: ${commission.toFixed(2)}`);
     $('#total').text(total.toFixed(2));
     $('#commission').text(commission.toFixed(2));
-    console.log(`Final Total: ${total.toFixed(2)}, Commission: ${commission.toFixed(2)}`);
   };
 
   // Bind Calculate button
@@ -40,6 +48,7 @@ $(document).ready(function () {
 
   // Submit Form
   window.SubForm = function () {
+    console.log('SubForm() triggered');
     const total = $('#total').text().trim();
     if (!total) {
       alert('Please calculate the total first!');
@@ -54,7 +63,8 @@ $(document).ready(function () {
     $('.menu-item:checked').each(function () {
       const itemName = $(this).parent().text().trim();
       const price = parseFloat($(this).attr('data-price'));
-      const quantity = parseInt($(this).next('.quantity').val()) || 1;
+      const quantityInput = $(this).siblings('.quantity');
+      const quantity = quantityInput.length ? parseInt(quantityInput.val()) || 1 : 1;
       if (!isNaN(price) && !isNaN(quantity) && quantity > 0) {
         orderedItems.push({ name: itemName, price, quantity });
       }
@@ -119,11 +129,12 @@ $(document).ready(function () {
 
   // Reset Form
   window.resetForm = function () {
+    console.log('resetForm() triggered');
     $('.menu-item').prop('checked', false);
     $('.quantity').val(1);
     $('#total, #commission').text('');
     $('#discount').val('0');
-    $('#employeeName').val(''); // Clear employee name
+    $('#employeeName').val('');
   };
 
   // Clock In
@@ -201,7 +212,6 @@ $(document).ready(function () {
       second: '2-digit',
       hour12: true
     }) || 'Unknown Time';
-    // Calculate duration
     const durationMs = clockOutTime - clockInTime;
     const hours = Math.floor(durationMs / (1000 * 60 * 60));
     const minutes = Math.floor((durationMs % (1000 * 60 * 60)) / (1000 * 60));
@@ -231,7 +241,7 @@ $(document).ready(function () {
       success: function () {
         alert(`${employeeName} successfully clocked out at ${localTime}! Duration: ${durationText}`);
         console.log('Clock-out webhook sent successfully');
-        clockInTime = null; // Reset clock-in time
+        clockInTime = null;
       },
       error: function (xhr, status, error) {
         alert('Error clocking out. Webhook may be invalid or unreachable. Check console for details.');

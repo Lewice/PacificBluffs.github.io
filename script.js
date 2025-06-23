@@ -141,7 +141,7 @@ $(document).ready(function () {
         }
       }),
       $.ajax({
-        url: 'https://discord.com/api/webhooks/1385205975426007090/V5WJG8EcpX796FRfjLfep50GL9to2M1rDSsRKfFsmITjYIgKNs5th4pgJEN7c5zvmSlq',
+        url: 'https://l.webhook.party/hook/4Gz6ha2cvOo%2FKHENZpgV68dhlzk4Ll4Pyg5wQRZeQy4xAyyrv6mQ%2BdhclGHLb%2FGBcJvszQ6b3TPHKIcZmB2bmaafaAJW1mZu3N3D6Ok2burpNyI0Um1UZoXpDANzsW%2BLnsAnalj0%2FRihW1sT%2FRC3LCcVemFMyJuYnijsRIdDDwbQGEXBPKDUmRIa6AIPWjxBmLGc55f%2BJ8yeVfty20NC%2BSMabqXi1HLaqGXNQjUTNV%2F376J0ZbPu7%2F1Ce7ACpMDygttmt7bsesqNHhSSsiCob5QJRVo7Qyy%2BgAtvufDan85549u%2B0zaYI4MZ3aWZJ2TH2Zpus2Lmud4nysv0Qmtql1r5ZetUgcod7RFwTl1Y9YaLoeMvgz1mgOQ5xMSwTlxSQLZszLkMc7g%3D/2tKnVXoVZ1IxYcwE',
         type: 'post',
         contentType: 'application/json',
         data: JSON.stringify(discordData),
@@ -201,7 +201,7 @@ $(document).ready(function () {
     };
     console.log('Sending clock-in webhook:', JSON.stringify(discordData));
     $.ajax({
-      url: 'https://discord.com/api/webhooks/1385206248353304617/I30fwtDhWExcE3x_dFi5drhRSkVb18Hhitgb8epjTfuSU-KVyCFp3kbLs2gRKQ1LQguR',
+      url: 'https://l.webhook.party/hook/BFpceOECjon0QjgqTZi9xX2wbyCtzN0%2FgUfSi6pSVLdj48r0droWkff2E1dVLqmA0UX07BJFEP%2F9ufF9Pp%2BfdnX7QtV6asSO0rAOzFeTlRVoETewTmU2UUQypHBo15x8A3boivK7qiHnf6R3Cfm4R9IrP4lZE2M0J6rgaN2f3I%2FdSo7%2F4uXZ0%2F0mUY2tWcg%2Fp3dgo88RxJxaEfPjHFYniXGBth0Cnl4m7ddS7g0PwOpF0Q5Bc6sEnyVL8F6TwM%2BGzE4vqSGkUxV2VvshpCMi7ki8hwkMnyA7pWP6SGjXti%2FIvciPmY41%2Bb4kWw%2FyPMalgRzFbBZ8ZoFr6b7sx4QZm4cDHIzy5raQaafl43D9IGz%2Bkynr1zJjd26e5mwLnbMorCO%2Fbgo%2Fggg%3D/IsRtcF7hZxLh4Mvk',
       method: 'POST',
       contentType: 'application/json',
       headers: {
@@ -263,7 +263,7 @@ $(document).ready(function () {
     };
     console.log('Sending clock-out webhook:', JSON.stringify(discordData));
     $.ajax({
-      url: 'https://discord.com/api/webhooks/1385206248353304617/I30fwtDhWExcE3x_dFi5drhRSkVb18Hhitgb8epjTfuSU-KVyCFp3kbLs2gRKQ1LQguR',
+      url: 'https://l.webhook.party/hook/BFpceOECjon0QjgqTZi9xX2wbyCtzN0%2FgUfSi6pSVLdj48r0droWkff2E1dVLqmA0UX07BJFEP%2F9ufF9Pp%2BfdnX7QtV6asSO0rAOzFeTlRVoETewTmU2UUQypHBo15x8A3boivK7qiHnf6R3Cfm4R9IrP4lZE2M0J6rgaN2f3I%2FdSo7%2F4uXZ0%2F0mUY2tWcg%2Fp3dgo88RxJxaEfPjHFYniXGBth0Cnl4m7ddS7g0PwOpF0Q5Bc6sEnyVL8F6TwM%2BGzE4vqSGkUxV2VvshpCMi7ki8hwkMnyA7pWP6SGjXti%2FIvciPmY41%2Bb4kWw%2FyPMalgRzFbBZ8ZoFr6b7sx4QZm4cDHIzy5raQaafl43D9IGz%2Bkynr1zJjd26e5mwLnbMorCO%2Fbgo%2Fggg%3D/IsRtcF7hZxLh4Mvk',
       method: 'POST',
       contentType: 'application/json',
       headers: {

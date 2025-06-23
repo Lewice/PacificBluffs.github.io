@@ -165,7 +165,7 @@ $(document).ready(function () {
     $('.quantity').val('');
     $('#total, #commission').text('');
     $('#discount').val('0');
-    $('#employeeName').val('');
+    // Removed $('#employeeName').val(''); to keep employee name
   };
 
   // Clock In

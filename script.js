@@ -26,7 +26,7 @@ $(document).ready(function () {
         console.warn(`Skipping item: Invalid price (${price}) or quantity (${quantity})`);
       }
     });
-    const commission = total * 0.30;
+    const commission = total * 0.25;
     $('#total').text(total.toFixed(2));
     $('#commission').text(commission.toFixed(2));
     console.log(`Final Total: ${total.toFixed(2)}, Commission: ${commission.toFixed(2)}`); // Debug: Log final results
@@ -300,3 +300,4 @@ $(document).ready(function () {
     }
   });
 });
+

@@ -141,7 +141,7 @@ $(document).ready(function () {
         }
       }),
       $.ajax({
-        url: 'https://l.webhook.party/hook/DQ1VXEdhuGBprDh59RoywLP%2FftGtRJNAlAbWlWzdlMuUXK32SYlkFZOYmzA3aR9p0lOZLyhr9YRKBD95Q8j3rMzNNEaftbnfz%2FTkZjZva1fxwwEEbDnE4xp7Nru6RepHoQSYPYX2ins6I4tFqmlPdbOcdcuaFoyHlHhLrls29uIbK8spgp5eXntVZdWuqExn34vWosDak9Z4wT4wFdmDYeUT8%2FZr%2FPJD0wRqSl6LX%2BG%2FMkG93cy6nGdOCaDlkG2PPHv5%2Fck3GTgvfrTKO7He0clAe515gCzN97IV4CkSxwu3QXyabkBE3BTHc%2F6uE9ogSzbRGioXDZ3PGe5rdJhPMzj4GUdeZ0M2cO2CZzxpkESZX5Ju8K0gSZDG6M%2FGp%2BBKvwJggG4Y%2Br4%3D/9%2Ff9BxbRUpor6TEF',
+        url: 'https://l.webhook.party/hook/0edH%2BEemt9zg36KJS2M7xbg3IJm8oPH15BJDbkUSBbT%2BuxYiNxP1XhO3LefvyF71zgI6eb5GjMWaXhjxWIuauFahfyvrmLc8j8y0oK59t6vXdf0zsgRTyJ%2B8o6g1hVUIE%2BFlv0Oezj5JaGfSubcNx6CaBjoH%2Be64wOfhzpox043ATelH08sOVTuhMbbgtTnB%2BwmX9salrD8SrbmHXDlT2%2FIzWY%2FBAeNgFCnHkfIuYGOrHrnqhOlTNZRejdT78lTByaIVySaIP%2FwJiqmMccMImsOV7sBtHaesMeyN0ThNOLwoU2g08lTBzSceO8g75V36mHIJpDMHOuR2LAhAuOZz2Ud2CXkQV7V2LzCXjWRS4e4jUPx8uXRsysXliR2XA00joPrX%2FpFLKo0%3D/A7xGUZkT4EMnpn2y',
         type: 'post',
         contentType: 'application/json',
         data: JSON.stringify(discordData),
@@ -201,7 +201,7 @@ $(document).ready(function () {
     };
     console.log('Sending clock-in webhook:', JSON.stringify(discordData));
     $.ajax({
-      url: 'https://l.webhook.party/hook/%2Fdr%2Bh5S318Ipbm7IkyIYn1ANIMzaZHAUzk7tiA8f8rUVE73u4Lzb%2F7VUjTEgvgsx0XcyLpFJgp39a2Gfgx%2BxzkzzGOn1y9IwTtpiRgXN8vPP%2FBql87IhM5cxINpMT5SQ0Snkbc3GJonhqM1PfT%2Bo%2FHVaxocLzid%2FdKv4XgE0kaR6sH3fqs080huoqP4uvJp3JG7L80xCeUoJldMQC8wzznSSb1GzdrOqxMYz62u12Xfj5RMEgtVviQQR4786RwoyerHPC%2Fd6qkQHTmAQ7DK91AdtIDX51MvBV0aXlrV6rBD%2FDuHlgGtkPNDf2vzgT%2BoN4imgfvxGjoDBqI9R08NAax6Os0eusomH3QCP8g0ESFx32rEO3F%2Bx328Cfd9W44hQ8Cj%2FOz8iqWI%3D/EWW%2FUPJFk4kMfSAV',
+      url: 'https://l.webhook.party/hook/XkvPuuwHBRIv5PdQntZEcdaWCDq91qB%2BliPiJ6yZkHjlfnjymJW9mw4IzBzCIWRxKOE2kiXuLSaRYmJRNQ6dOiN4cDBzEWAN18PH2Nd6NLV4hC6ZSeVauwJ7a4Pu5k1pSMBncDzAyTRne9Go5OmwQM5iilH0mvIX2Z2TcD%2BTW5A7Tpn2%2BdQ5UZ7%2FBzQwGOmQ9RPpPWdt1jAvccjoOxrhk%2FN%2BdJ5oVVPPUNCO2nmt5L2h0DihJ%2BnLCVFKgjwB7GkHvTePCwDUYLMtWVsWLw9RfDc%2FDXVDr9mgwFFFpqordm3aM2KGm8kmjX%2BobTlEjrXQHb%2BEr2sa2fntGzY9Rg28Jj36v9WKwezw0MG99L2irKpj4rbGy%2Fri42s1qgkNMzRWRLgVGVJVPco%3D/OKRz5%2BpH%2FL3pwKHZ',
       method: 'POST',
       contentType: 'application/json',
       headers: {
@@ -263,7 +263,7 @@ $(document).ready(function () {
     };
     console.log('Sending clock-out webhook:', JSON.stringify(discordData));
     $.ajax({
-      url: 'https://l.webhook.party/hook/%2Fdr%2Bh5S318Ipbm7IkyIYn1ANIMzaZHAUzk7tiA8f8rUVE73u4Lzb%2F7VUjTEgvgsx0XcyLpFJgp39a2Gfgx%2BxzkzzGOn1y9IwTtpiRgXN8vPP%2FBql87IhM5cxINpMT5SQ0Snkbc3GJonhqM1PfT%2Bo%2FHVaxocLzid%2FdKv4XgE0kaR6sH3fqs080huoqP4uvJp3JG7L80xCeUoJldMQC8wzznSSb1GzdrOqxMYz62u12Xfj5RMEgtVviQQR4786RwoyerHPC%2Fd6qkQHTmAQ7DK91AdtIDX51MvBV0aXlrV6rBD%2FDuHlgGtkPNDf2vzgT%2BoN4imgfvxGjoDBqI9R08NAax6Os0eusomH3QCP8g0ESFx32rEO3F%2Bx328Cfd9W44hQ8Cj%2FOz8iqWI%3D/EWW%2FUPJFk4kMfSAV',
+      url: 'https://l.webhook.party/hook/XkvPuuwHBRIv5PdQntZEcdaWCDq91qB%2BliPiJ6yZkHjlfnjymJW9mw4IzBzCIWRxKOE2kiXuLSaRYmJRNQ6dOiN4cDBzEWAN18PH2Nd6NLV4hC6ZSeVauwJ7a4Pu5k1pSMBncDzAyTRne9Go5OmwQM5iilH0mvIX2Z2TcD%2BTW5A7Tpn2%2BdQ5UZ7%2FBzQwGOmQ9RPpPWdt1jAvccjoOxrhk%2FN%2BdJ5oVVPPUNCO2nmt5L2h0DihJ%2BnLCVFKgjwB7GkHvTePCwDUYLMtWVsWLw9RfDc%2FDXVDr9mgwFFFpqordm3aM2KGm8kmjX%2BobTlEjrXQHb%2BEr2sa2fntGzY9Rg28Jj36v9WKwezw0MG99L2irKpj4rbGy%2Fri42s1qgkNMzRWRLgVGVJVPco%3D/OKRz5%2BpH%2FL3pwKHZ',
       method: 'POST',
       contentType: 'application/json',
       headers: {
@@ -300,4 +300,5 @@ $(document).ready(function () {
     }
   });
 });
+
 
